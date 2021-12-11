@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 from sys import argv
 
+USAGE_MSG = """Usage: [snus/unsnus] [message]
+\"tank you\" to exit"""
+
+
+
 def snus(raw):
     enc = ""
     for c in raw:
@@ -28,16 +33,34 @@ def unsnus(enc):
                 return
         raw += chr(n)
     print(raw)
-      
 
+def interactive_snus():
+    print("snuscode interactive prompt")
+    print(USAGE_MSG)
+    while(True):
+        while (inp:=input(">>> ").split(" "))[0] not in ["snus", "unsnus"] and " ".join(inp[0:2])!="tank you":
+            print("invalid command!")
+            print(USAGE_MSG)
+        if inp[0]=="help":
+            print(USAGE_MSG)
+        elif inp[0]=="snus":
+            snus(" ".join(inp[1:]))
+        elif inp[0]=="unsnus":
+            unsnus(" ".join(inp[1:]))
+        elif " ".join(inp[0:2]) == "tank you":
+            return
+
+    
 def main():
-    if len(argv) > 2 and argv[1] == "snus":
+    if len(argv) == 1:
+        interactive_snus()
+    elif len(argv) > 2 and argv[1] == "snus":
         snus(" ".join(argv[2:]))
     elif len(argv) > 2 and argv[1] == "unsnus":
         unsnus(" ".join(argv[2:]))
     else:
         print("ERROR: Invalid args given!")
-        print("Usage: ./snus.py [snus/unsnus] [msg]")
+        print(f"Usage: {argv[0]} [snus/unsnus] [msg]")
     
 if __name__ == "__main__":
     main()
