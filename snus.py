@@ -84,7 +84,8 @@ func_descriptions["hjelp"]="show help for this script"
 
 def interactive_snus():
     print("snuscode interactive prompt v2.0")
-    print(USAGE_MSG)
+    print(HELP_REMINDER)
+    print(EXIT_REMINDER)
     while(True):
         inp=input(">>> ").split(" ")
         cmd,msg = inp[0], " ".join(inp[1:])
