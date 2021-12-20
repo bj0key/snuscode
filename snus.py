@@ -22,7 +22,7 @@ def interactive_snus():
         elif cmd == "setformat":
             if message in const.VALID_FORMATS:
                 format = message
-                print(FORMAT_SUCCESS, format)
+                print(const.FORMAT_SUCCESS, format)
             else:
                 print(const.INVALID_FORMAT)
                 
@@ -38,7 +38,10 @@ def interactive_snus():
 
 
 def main():
-    message = " ".join(args.message)
+    if isinstance(args.message, str):
+        message = args.message
+    else:
+        message = " ".join(args.message)
     if args.message == "":
         interactive_snus()
     elif args.mode == "snus":
@@ -49,7 +52,7 @@ def main():
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("message", help="The message to be encoded/decoded", nargs="+")
+    parser.add_argument("message", help="The message to be encoded/decoded", nargs="?", default="")
     parser.add_argument('-mode', help='Specify whether to encode or decode msg', default="snus", choices=("snus", "unsnus"))
     parser.add_argument("-format", help="Specify the format to use", nargs="?", default="auto", choices=const.VALID_FORMATS)
     args = parser.parse_args()  

@@ -1,4 +1,4 @@
-VALID_FORMATS = ["auto", "legacy", "rev2"]
+VALID_FORMATS = ["auto", "legacy", "rev2", "rev2-rle"]
 
 HELP_REMINDER = "type \"hjelp\" for help"
 EXIT_REMINDER = "type \"tank you\" to exit"
@@ -17,4 +17,4 @@ INVALID_FORMAT = "ERROR: Invalid Format!\nTry using \"formats\" to list all avai
 INVALID_USAGE = "ERROR: Unexpected number of args given!"
 
 ILLEGAL_CHARS = "ERROR: Illegal characters in message! Unable to decode"
-DECODE_FAILURE = "ERROR: Unknown format!\nPerhaps try manually specifying encoding with -fmt [fmt]"
+DECODE_ERROR = "ERROR: Illegal formatting detected! Could not decode."
