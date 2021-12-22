@@ -56,7 +56,7 @@ def decode(msg, fmt="auto"):
         if msg[0]!="s":
             fmt = "legacy"
         else:
-            fmt = encode_formats[msg[0:4]]
+            fmt = encode_prefixes[msg[0:4]]
             msg = msg[4:]
             
     try:
